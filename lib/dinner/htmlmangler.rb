@@ -9,15 +9,15 @@ module HtmlMangler
       lines = IO.readlines(path)
       lines.each_with_index do |line,i|
         if line =~ /^\s*<!-- @include.*/
-          if File.exists?(find_filename(line))
-            lines[i] = File.read(find_filename(line))
+          if File.exists?("#{Dir.pwd}/#{find_filename(line)}")
+            lines[i] = File.read("#{Dir.pwd}/#{find_filename(line)}")
             a = i
           else
             puts "Error in #{name}, line #{i+1}: #{find_filename(line)} missing"
           end
         end
       end
-      File.open("build/#{name}", "w+") do |file|
+      File.open("#{Dir.pwd}/build/#{name}", "w+") do |file|
         file.puts(lines)
       end
     end
