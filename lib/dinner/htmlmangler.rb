@@ -37,3 +37,4 @@ module HtmlMangler
   end
 
 end
+

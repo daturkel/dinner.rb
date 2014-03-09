@@ -12,3 +12,4 @@ class ConfigManager
   end
 
 end
+
