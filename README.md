@@ -4,7 +4,7 @@
 
 Dinner is a Ruby gem designed to replicate some of the feature set of [Hammer](http://hammerformac.com/) for Mac. I'm a huge fan of Hammer's ability to do HTML includes and variables, so I made Dinner to see how well I could do it myself without the app, 'cause why not?
 
-Basically, you can write HTML pages with lines like `<!-- @include _header.html -->` and then Dinner will automagically copy your header file into all of your HTML pages, allowing you to edit that header file and see your changes propagate across all your files after running Dinner! This is perfect for building static sites where you don't want to bother with PHP includes but still want to be able to easily edit your templates.
+Basically, you can write HTML pages with lines like `<!-- @include _header.html -->` and then Dinner will automagically copy your header file into all of your HTML pages, allowing you to edit that header file and see your changes propagate across all your files after running Dinner! This is perfect for building static sites where you don't want to bother with PHP includes but still want to be able to easily edit your templates (or 'plates, hence Dinner, get it?).
 
 The project is similar in scope to [grunt-includes](https://github.com/vanetix/grunt-includes) but does not involve setting up [grunt](http://gruntjs.com/) tasks, uses a different syntax, and is Ruby-based rather than JS based.
 
