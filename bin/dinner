@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'dinner'
+
+Dinner.do_everything
