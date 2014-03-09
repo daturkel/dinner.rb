@@ -1,26 +1,113 @@
-# Dinner
+# Dinner.rb
 
-TODO: Write a gem description
+## What's Dinner?
+
+Dinner is a Ruby gem designed to replicate some of the feature set of [Hammer](http://hammerformac.com/) for Mac. I'm a huge fan of Hammer's ability to do HTML includes and variables, so I made Dinner to see how well I could do it myself without the app, 'cause why not?
+
+Basically, you can write HTML pages with lines like `<!-- @include _header.html -->` and then Dinner will automagically copy your header file into all of your HTML pages, allowing you to edit that header file and see your changes propagate across all your files after running Dinner! This is perfect for building static sites where you don't want to bother with PHP includes but still want to be able to easily edit your templates.
+
+### What it does so far:
+
+- Include `_foo.html` files into `bar.html` files and move the compiled results into a build directory, but only when you manually run the app
+- That's basically it
+
+### What I'm going to do for sure
+- Support Hammer-style [HTML variables](http://hammerformac.com/docs/tags/variables)
+- Fix behavior with HTML files that are inside directories in the working directory (currently the directory structure will be flattened inside the build folder)
+- Copying CSS and JS files (perhaps more) to the build folder so that loading the build file in a web browser will not result in dead links to stylesheets and scripts which are in the parent directory
+- Make a easy-to-use YAML config file where you can change:
+    - build directory name
+    - what non-HTML files should be copied to the build directory (and if you want the minified)
+    - probably more stuff
+- Use the [listen](https://github.com/guard/listen) gem to automatically recompile files when they're edited, so the app doesn't need to be manually run
+- Add rspec tests
+- Put it on RubyGems when it's moderately ready
+- Replicate Hammer's [image placeholders](http://hammerformac.com/docs/tags/placeholder) feature
+
+### What maybe I'll do
+- Support includes within includes
+- Support includes that are not in `_foo.html` name format
+- Replicate Hammer's [navigation helpers](http://hammerformac.com/docs/tags/navigation.html) feature
+- Add Sass/SCSS compilation
+
+### What I definitely won't do but feel free to contribute
+- Coffeescript compilation
+- Replicate Hammer's [cache](http://hammerformac.com/docs/cache) feature
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Dinner isn't on RubyGems yet and is still in early dev stages. If you want to play with it or contribute, go ahead and run
 
-    gem 'dinner'
+    git clone https://github.com/daturkel/dinner.rb.git
 
-And then execute:
+Then `cd` to the cloned directory and run
 
-    $ bundle
+    gem build dinner.gemspec
 
-Or install it yourself as:
+followed by
 
-    $ gem install dinner
+    gem install *.gem
 
 ## Usage
 
-TODO: Write usage instructions here
+**Warning**: This product is in early alpha and if used improperly, or if I messed something up, could easily trash your files. I recommend you make a backup of your entire working directory or use version control before running `dinner` in your directory (at least at this early stage of development). By using `dinner`, you do so at your own risk.
+
+Right now, since Dinner's functionality is fairly limited, this section is quite simple! After installing the gem, simply `cd` to your working directory. If you have not already, you should isolate all your project files into their own directory to avoid accidental compilation of other unrelated files. 
+
+Write HTML pages into files with typical names (`about.html`) and files that will be included into files that have leading-underscore names (`_header.html`). In your page files (like `about.html`), where you want an include, insert a single line with a comment in this form: `<!-- @include _foo.html -->` (or, alternatively, as `<!-- @include _foo -->`, without the `.html`, Dinner will assume you meant it) where `_foo.html` is the name of your include file. When you run `dinner` in the working directory, Dinner will automatically find the include file and replace the comment with it, verbatim (no changes to indent amount or anything) and output the new page into your `build/` directory. If Dinner is unable to find an include file, it will simply leave the comment in place and alert you with an error message in the terminal.
+
+## Example
+In `about.html`:
+
+```html
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>About me!</title>
+</head>
+
+<body>
+    <!-- @include _head.html -->
+    <h2>Welcome</h2>
+    <p>This site is all about me! Isn't it neato?</p>
+</body>
+</html>
+```
+
+In `_head.html`:
+```html
+    <p>This banner goes across every page of my website and now I can change it on all of them easily!</p>
+    <p>That's sick!</p>
+```
+
+And, after Dinner has been run, in `build/about.html`:
+````html
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>About me!</title>
+</head>
+
+<body>
+    <p>This banner goes across every page of my website and now I can change it on all of them easily!</p>
+    <p>That's sick!</p>
+    <h2>Welcome</h2>
+    <p>This site is all about me! Isn't it neato?</p>
+</body>
+</html>
+````
+
+It's that easy!
+
+## Uninstallation
+
+To uninstall dinner, simply run `gem uninstall dinner` and when prompted to remove the executable, answer `y`.
+
 
 ## Contributing
+
+Feel free to contribute by filing an issue or submitting a pull request:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
