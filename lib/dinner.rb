@@ -14,9 +14,11 @@ require 'fileutils'
 
 # This module is the primary Dinner namespace used to wrap the functionality of the rest of the app
 module Dinner
-    # Run Dinner
-    def self.do_everything
-        FileManager.init_build(FileManager.locate_html(true,ConfigManager.default[:build_folder],false),ConfigManager.default[:build_folder])
-        HtmlMangler.mangle(FileManager.locate_html(false,ConfigManager.default[:build_folder],true))
-    end
+
+  # Run Dinner
+  def self.do_everything
+    FileManager.init_build(FileManager.locate_html(true,ConfigManager.default[:build_folder],false),ConfigManager.default[:build_folder])
+    HtmlMangler.mangle(FileManager.locate_html(false,ConfigManager.default[:build_folder],true))
+  end
+
 end
