@@ -14,6 +14,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - That's basically it
 
 ### What I'm going to do for sure
+- Better documentation
 - Support Hammer-style [HTML variables](http://hammerformac.com/docs/tags/variables)
 - Fix behavior with HTML files that are inside directories in the working directory (currently the directory structure will be flattened inside the build folder)
 - Copying CSS and JS files (perhaps more) to the build folder so that loading the build file in a web browser will not result in dead links to stylesheets and scripts which are in the parent directory

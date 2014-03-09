@@ -1,5 +1,6 @@
+# A module for editing the HTML of files being processed with dinner 
 module HtmlMangler
-    
+    # Find @include commands in an html document and replace them with the contents of the correct file, or else display an error in the shell and leave the @include command in place
     def self.mangle(html)
         lines = ""
         a = 0
@@ -7,11 +8,11 @@ module HtmlMangler
             lines = IO.readlines(path)
             lines.each_with_index do |line,i|
                 if line =~ /^\s*<!-- @include.*/
-                    if File.exists?(strip_filename(line))
-                        lines[i] = File.read(strip_filename(line))
+                    if File.exists?(find_filename(line))
+                        lines[i] = File.read(find_filename(line))
                         a = i
                     else
-                        puts "Error in #{name}, line #{i+1}: #{strip_filename(line)} missing"
+                        puts "Error in #{name}, line #{i+1}: #{find_filename(line)} missing"
                     end
                 end
             end
@@ -21,7 +22,8 @@ module HtmlMangler
         end
     end
 
-    def self.strip_filename(line)
+    # Take a line of an html page file and derive the name of the referenced file from it
+    def self.find_filename(line)
         clean_line = line.dup
         clean_line.slice!("<!-- @include")
         clean_line.slice!("-->")

@@ -1,5 +1,6 @@
+# A module for locating files and creating the build folder
 module FileManager 
-
+    # Find the html files and return a hash containing an array of page files (:files) and an array of include files (:includes)
     def self.locate_html(with_includes,build_folder,in_build = false)
         html = { :files => {}}
         if with_includes
@@ -28,6 +29,8 @@ module FileManager
         return html
     end
 
+    # Create the build folder if it does not exist. If it does exist, prunes it of old files.
+    # @TODO: Split this into two functions, one to create the build folder if it doesn't exist, and one to delete files which will be replaced
     def self.init_build(html,build_folder)
         if Dir.exists?(build_folder)
             Find.find("#{Dir.pwd}/#{build_folder}") do |path|
