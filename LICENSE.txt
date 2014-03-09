@@ -1,4 +1,4 @@
-Copyright (c) 2014 daturkel
+Copyright (c) 2014 Dan Turkel
 
 MIT License
 
