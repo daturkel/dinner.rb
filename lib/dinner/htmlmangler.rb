@@ -1,4 +1,4 @@
-# A module for editing the HTML of files being processed with dinner 
+# A module for editing the HTML of files being processed with dinner
 module HtmlMangler
 
   # Find @include commands in an html document and replace them with the contents of the correct file, or else display an error in the shell and leave the @include command in place
@@ -19,7 +19,7 @@ module HtmlMangler
       end
       File.open("build/#{name}", "w+") do |file|
         file.puts(lines)
-      end 
+      end
     end
   end
 

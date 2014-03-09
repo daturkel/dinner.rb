@@ -1,11 +1,11 @@
 # A module for locating files and creating the build folder
-module FileManager 
+module FileManager
 
   # Find the html files and return a hash containing an array of page files (:files) and an array of include files (:includes)
   def self.locate_html(with_includes,build_folder,in_build = false)
     html = { :files => {}}
     if with_includes
-      html[:includes] = {} 
+      html[:includes] = {}
     end
     if in_build
       dir = "#{Dir.pwd}/#{build_folder}"
@@ -37,7 +37,7 @@ module FileManager
       Find.find("#{Dir.pwd}/#{build_folder}") do |path|
         File.delete(path) if File.extname(path) == ".html"
       end
-    else 
+    else
       Dir.mkdir build_folder
     end
     html[:files].each_value do |path|

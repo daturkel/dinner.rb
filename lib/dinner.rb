@@ -1,4 +1,4 @@
-# Dinner is a Ruby gem for HTML includes. 
+# Dinner is a Ruby gem for HTML includes.
 #
 # Author:: Dan Turkel (mailto:daturkel@gmail.com)
 # Copyright:: Copyright (c) 2014 Dan Turkel
