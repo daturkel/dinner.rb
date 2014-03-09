@@ -2,7 +2,9 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fileutils'
+require 'find'
 require 'listen'
+require 'yaml'
 require 'dinner/version'
 require 'dinner/configmanager'
 require 'dinner/filemanager'

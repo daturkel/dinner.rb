@@ -8,9 +8,10 @@ require_relative 'dinner/version'
 require_relative 'dinner/filemanager'
 require_relative 'dinner/htmlmangler'
 require_relative 'dinner/configmanager'
+require 'fileutils'
 require 'find'
 require 'listen'
-require 'fileutils'
+require 'yaml'
 
 # This module is the primary Dinner namespace used to wrap the functionality of the rest of the app
 module Dinner
@@ -23,3 +24,4 @@ module Dinner
 
 end
 
+Dinner.do_everything
