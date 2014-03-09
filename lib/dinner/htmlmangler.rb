@@ -17,7 +17,7 @@ module HtmlMangler
           end
         end
       end
-      File.open("#{Dir.pwd}/build/#{name}","w+") do |file|
+      File.open("#{Dir.pwd}/#{ConfigManager.config[:build_folder]}/#{name}","w+") do |file|
         file.puts(lines)
       end
     end

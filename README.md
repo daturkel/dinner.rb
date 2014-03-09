@@ -11,6 +11,9 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 ### What it does so far:
 
 - Include `_foo.html` files into `bar.html` files and move the compiled results into a build directory, but only when you manually run the app
+- Makes a `dinconfig.yaml` file where you can:
+    - Edit the build folder name
+    - More to come
 - That's basically it
 
 ### What I'm going to do for sure
@@ -18,8 +21,8 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - Support Hammer-style [HTML variables](http://hammerformac.com/docs/tags/variables)
 - Fix behavior with HTML files that are inside directories in the working directory (currently the directory structure will be flattened inside the build folder)
 - Copying CSS and JS files (perhaps more) to the build folder so that loading the build file in a web browser will not result in dead links to stylesheets and scripts which are in the parent directory
-- Make a easy-to-use YAML config file where you can change:
-    - build directory name
+- <del>Make a easy-to-use YAML config file where you can change:</del> done!
+    - <del>Edit the build folder name</del> done!
     - what non-HTML files should be copied to the build directory (and if you want the minified)
     - probably more stuff
 - Use the [listen](https://github.com/guard/listen) gem to automatically recompile files when they're edited, so the app doesn't need to be manually run
