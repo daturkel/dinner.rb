@@ -3,7 +3,8 @@ module ConfigManager
 
   # The defaults for the config file
   DEFAULT = {
-    :build_folder => "build"
+    :build_folder => "build",
+    :copy_formats => ["js","css"]
   }
 
   @@config = {}

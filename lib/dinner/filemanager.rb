@@ -30,7 +30,7 @@ module FileManager
     return html
   end
 
-  # Create the build folder if it does not exist. If it does exist, prunes it of old files.
+  # Create the build folder if it does not exist. If it does exist, prunes it of old files. Then it moves in the unprocessed page-files.
   # @TODO: Split this into two functions, one to create the build folder if it doesn't exist, and one to delete files which will be replaced
   def self.init_build(html,build_folder)
     if Dir.exists?(build_folder)
@@ -38,8 +38,12 @@ module FileManager
         File.delete(path) if File.extname(path) == ".html"
       end
     else
-      Dir.mkdir build_folder
+      Dir.mkdir "#{Dir.pwd}/#{build_folder}"
     end
+    self.push_files(html,build_folder)
+  end
+
+  def self.push_files(html,build_folder)
     html[:files].each_value do |path|
       FileUtils.cp(path,"#{Dir.pwd}/#{build_folder}")
     end
