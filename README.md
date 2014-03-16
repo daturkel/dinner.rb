@@ -1,6 +1,13 @@
 # Dinner.rb
 
-## What's Dinner?
+- [What's Dinner?](#what)
+- [Installation](#install)
+- [Usage](#usage)
+- [Example](#example)
+- [Uninstallation](#uninstall)
+- [Contributing](#contribute)
+
+## <a name="what">What's Dinner?</a>
 
 Dinner is a Ruby gem designed to replicate some of the feature set of [Hammer](http://hammerformac.com/) for Mac. I'm a huge fan of Hammer's ability to do HTML includes and variables, so I made Dinner to see how well I could do it myself without the app, 'cause why not?
 
@@ -14,6 +21,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - Makes a `dinconfig.yaml` file where you can:
     - Edit the build folder name
     - More to come
+- Finds placeholder tags and switches them for [placehold.it](http://placehold.it) `img` tags. (See [Example](#example) below)
 - That's basically it
 
 ### What I'm going to do for sure
@@ -28,7 +36,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - Use the [listen](https://github.com/guard/listen) gem to automatically recompile files when they're edited, so the app doesn't need to be manually run
 - Add rspec tests
 - Put it on RubyGems when it's moderately ready
-- Replicate Hammer's [image placeholders](http://hammerformac.com/docs/tags/placeholder) feature
+- <del>Replicate Hammer's [image placeholders](http://hammerformac.com/docs/tags/placeholder) feature</del> done!
 
 ### What maybe I'll do
 - Support includes within includes
@@ -41,7 +49,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - Replicate Hammer's [cache](http://hammerformac.com/docs/cache) feature
 
 
-## Installation
+## <a name="install">Installation</a>
 
 Dinner isn't on RubyGems yet and is still in early dev stages. If you want to play with it or contribute, go ahead and run
 
@@ -55,7 +63,7 @@ followed by
 
     gem install *.gem
 
-## Usage
+## <a name="usage">Usage</a>
 
 **Warning**: This product is in early alpha and if used improperly, or if I messed something up, could easily trash your files. I recommend you make a backup of your entire working directory or use version control before running `dinner` in your directory (at least at this early stage of development). By using `dinner`, you do so at your own risk.
 
@@ -63,7 +71,7 @@ Right now, since Dinner's functionality is fairly limited, this section is quite
 
 Write HTML pages into files with typical names (`about.html`) and files that will be included into files that have leading-underscore names (`_header.html`). In your page files (like `about.html`), where you want an include, insert a single line with a comment in this form: `<!-- @include _foo.html -->` (or, alternatively, as `<!-- @include _foo -->`, without the `.html`, Dinner will assume you meant it) where `_foo.html` is the name of your include file. When you run `dinner` in the working directory, Dinner will automatically find the include file and replace the comment with it, verbatim (no changes to indent amount or anything) and output the new page into your `build/` directory. If Dinner is unable to find an include file, it will simply leave the comment in place and alert you with an error message in the terminal.
 
-## Example
+## <a name="example">Example</a>
 In `about.html`:
 
 ```html
@@ -76,6 +84,7 @@ In `about.html`:
 <body>
     <!-- @include _head.html -->
     <h2>Welcome</h2>
+    <!-- @placeholder 300x400 --><!-- @placeholder 400x500 -->
     <p>This site is all about me! Isn't it neato?</p>
 </body>
 </html>
@@ -99,6 +108,7 @@ And, after Dinner has been run, in `build/about.html`:
     <p>This banner goes across every page of my website and now I can change it on all of them easily!</p>
     <p>That's sick!</p>
     <h2>Welcome</h2>
+    <img src="http://placehold.it/300x400"><img src="http://placehold.it/400x500">
     <p>This site is all about me! Isn't it neato?</p>
 </body>
 </html>
@@ -106,12 +116,12 @@ And, after Dinner has been run, in `build/about.html`:
 
 It's that easy!
 
-## Uninstallation
+## <a name="uninstall">Uninstallation</a>
 
 To uninstall dinner, simply run `gem uninstall dinner` and when prompted to remove the executable, answer `y`.
 
 
-## Contributing
+## <a name="contribute">Contributing</a>
 
 Feel free to contribute by filing an issue or submitting a pull request:
 
