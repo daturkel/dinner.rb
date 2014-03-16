@@ -1,5 +1,5 @@
-# This module is for creating/accessing a config file with options for Dinner
-module ConfigManager
+# This class is for creating/accessing a config file with options for Dinner
+class ConfigManager
 
   # The defaults for the config file
   DEFAULT = {

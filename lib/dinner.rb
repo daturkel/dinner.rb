@@ -19,8 +19,8 @@ module Dinner
   # Run Dinner
   def self.do_everything
     ConfigManager.init_config
-    FileManager.init_build(FileManager.locate_html(true,ConfigManager.config[:build_folder],false),ConfigManager.config[:build_folder])
-    HtmlMangler.mangle(FileManager.locate_html(false,ConfigManager.config[:build_folder],true))
+    FileManager.init_build(FileManager.locate_html(true,false))
+    HtmlMangler.mangle(FileManager.locate_html(false,true))
   end
 
 end
