@@ -2,8 +2,7 @@
 module HtmlMangler
 
   # Find @include commands in an html document and replace them with the contents of the correct file, or else display an error in the shell and leave the @include command in place
-  def self.mangle(html)
-    lines = ""
+  def self.include(html)
     a = 0
     html[:files].each_pair do |name,path|
       lines = IO.readlines(path)
@@ -33,6 +32,19 @@ module HtmlMangler
       return clean_line
     else
       return clean_line + ".html"
+    end
+  end
+
+  # Replace variables
+  def self.replace_variables(html)
+    a = 0
+    html[:files].each_pair do |name,path|
+      lines = IO.readlines(path)
+      lines.each_with_index do |line,i|
+        if line =~ /^\s*<!-- \$.*/
+          # @TODO figure out how best to pick out those variable names
+        end
+      end
     end
   end
 

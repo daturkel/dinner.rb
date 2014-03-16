@@ -20,7 +20,7 @@ module Dinner
   def self.do_everything
     ConfigManager.init_config
     FileManager.init_build(FileManager.locate_html(true,false))
-    HtmlMangler.mangle(FileManager.locate_html(false,true))
+    HtmlMangler.include(FileManager.locate_html(false,true))
   end
 
 end
