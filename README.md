@@ -35,7 +35,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
     - probably more stuff
 - Use the [listen](https://github.com/guard/listen) gem to automatically recompile files when they're edited, so the app doesn't need to be manually run
 - Add rspec tests
-- Put it on RubyGems when it's moderately ready
+- <del>Put it on RubyGems when it's moderately ready</del> done!
 - <del>Replicate Hammer's [image placeholders](http://hammerformac.com/docs/tags/placeholder) feature</del> done!
 
 ### What maybe I'll do
@@ -51,17 +51,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 
 ## <a name="install">Installation</a>
 
-Dinner isn't on RubyGems yet and is still in early dev stages. If you want to play with it or contribute, go ahead and run
-
-    git clone https://github.com/daturkel/dinner.rb.git
-
-Then `cd` to the cloned directory and run
-
-    gem build dinner.gemspec
-
-followed by
-
-    gem install *.gem
+Simply run `gem install dinner` to automatically install Dinner and it's dependencies from RubyGems.org.
 
 ## <a name="usage">Usage</a>
 
