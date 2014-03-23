@@ -31,7 +31,7 @@ The project is similar in scope to [grunt-includes](https://github.com/vanetix/g
 - Copying CSS and JS files (perhaps more) to the build folder so that loading the build file in a web browser will not result in dead links to stylesheets and scripts which are in the parent directory
 - <del>Make a easy-to-use YAML config file where you can change:</del> done!
     - <del>Edit the build folder name</del> done!
-    - what non-HTML files should be copied to the build directory (and if you want the minified)
+    - what non-HTML files should be copied to the build directory (and if you want them minified)
     - probably more stuff
 - Use the [listen](https://github.com/guard/listen) gem to automatically recompile files when they're edited, so the app doesn't need to be manually run
 - Add rspec tests
